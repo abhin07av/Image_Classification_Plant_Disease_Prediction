@@ -1,123 +1,101 @@
-Plant Disease Recognition System
+# 🌿 Plant Disease Recognition System
 
-This project is a complete deep learning pipeline for identifying 38 different classes of plant diseases from leaf images. It uses a Convolutional Neural Network (CNN) built with TensorFlow/Keras and includes a user-friendly web application created with Streamlit for real-time predictions.
+**Website:** *(Link to your deployed Streamlit App goes here, e.g., `https://your-app-name.streamlit.app`)*
 
-Features
+A web application that helps users identify 38 different plant diseases from images. It uses a deep learning model built with TensorFlow/Keras and a Streamlit frontend to provide fast and accurate predictions.
 
-High-Accuracy Model: A deep CNN trained on over 70,000 images, achieving 94.6% validation accuracy.
+---
 
-38 Classes: Identifies a wide variety of diseases across 14 different plant types, including Apple, Corn, Grape, Potato, and Tomato.
+## ✨ Features
 
-Interactive Web App: An easy-to-use Streamlit interface allows users to upload their own plant leaf images and receive instant predictions.
+* **📈 High-Accuracy Model:** A deep CNN trained on over 70,000 images, achieving **94.6% validation accuracy**.
+* **🌳 38 Classes:** Identifies a wide variety of diseases across 14 different plant types, including Apple, Corn, Grape, Potato, and Tomato.
+* **📷 Interactive Web App:** An easy-to-use Streamlit interface allows users to upload their own plant leaf images and receive instant predictions.
+* **📊 Detailed Evaluation:** Model performance is thoroughly analyzed with accuracy/loss plots, a per-class classification report, and a confusion matrix.
 
-Detailed Evaluation: The model's performance is thoroughly analyzed with accuracy/loss plots, a per-class classification report, and a confusion matrix.
+---
 
-Dataset
+## 💻 Tech Stack
 
-The model was trained on the New Plant Diseases Dataset available on Kaggle. This dataset contains 87,000+ RGB images of healthy and diseased crop leaves.
+| Technology | Description |
+| :--- | :--- |
+| **`Backend & Model`** | `Python`, `TensorFlow`, `Keras`, `Scikit-learn` |
+| **`Web Framework`** | `Streamlit` |
+| **`Data Handling`** | `NumPy`, `Pandas` |
+| **`Image Processing`** | `OpenCV`, `Matplotlib`, `Seaborn` |
 
-Link: https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
+---
 
-Dataset Structure:
+## Dataset
 
-Training Set: 70,295 images
+The model was trained on the **New Plant Diseases Dataset** available on Kaggle. This dataset contains 87,000+ RGB images of healthy and diseased crop leaves.
 
-Validation Set: 17,572 images
+* **Link:** [https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset](https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset)
+* **Dataset Structure:**
+    * **Training Set:** 70,295 images
+    * **Validation Set:** 17,572 images
+    * **Total Classes:** 38
 
-Total Classes: 38
+## Model Architecture
 
-Model Architecture
+The core of this project is a Sequential CNN model built with `tensorflow.keras`.
 
-The core of this project is a Sequential CNN model built with tensorflow.keras.
+* **Input Shape:** `(128, 128, 3)`
+* **Architecture:**
+    1.  **Block 1:** Conv2D (32 filters, 3x3) -> Conv2D (32 filters, 3x3) -> MaxPool2D (2x2)
+    2.  **Block 2:** Conv2D (64 filters, 3x3) -> Conv2D (64 filters, 3x3) -> MaxPool2D (2x2)
+    3.  **Block 3:** Conv2D (128 filters, 3x3) -> Conv2D (128 filters, 3x3) -> MaxPool2D (2x2)
+    4.  **Block 4:** Conv2D (256 filters, 3x3) -> Conv2D (256 filters, 3x3) -> MaxPool2D (2x2)
+    5.  **Block 5:** Conv2D (512 filters, 3x3) -> Conv2D (512 filters, 3x3) -> MaxPool2D (2x2)
+    6.  **Dropout:** `Dropout(0.25)`
+    7.  **Flatten:** `Flatten()`
+    8.  **Dense:** `Dense(1500, activation='relu')`
+    9.  **Dropout:** `Dropout(0.4)`
+    10. **Output:** `Dense(38, activation='softmax')`
+* **Optimizer:** `Adam` (learning rate = `0.0001`)
+* **Loss Function:** `categorical_crossentropy`
 
-Input Shape: (128, 128, 3)
-
-Architecture:
-
-Block 1: Conv2D (32 filters, 3x3) -> Conv2D (32 filters, 3x3) -> MaxPool2D (2x2)
-
-Block 2: Conv2D (64 filters, 3x3) -> Conv2D (64 filters, 3x3) -> MaxPool2D (2x2)
-
-Block 3: Conv2D (128 filters, 3x3) -> Conv2D (128 filters, 3x3) -> MaxPool2D (2x2)
-
-Block 4: Conv2D (256 filters, 3x3) -> Conv2D (256 filters, 3x3) -> MaxPool2D (2x2)
-
-Block 5: Conv2D (512 filters, 3x3) -> Conv2D (512 filters, 3x3) -> MaxPool2D (2x2)
-
-Dropout: Dropout(0.25)
-
-Flatten: Flatten()
-
-Dense: Dense(1500, activation='relu')
-
-Dropout: Dropout(0.4)
-
-Output: Dense(38, activation='softmax')
-
-Optimizer: Adam (learning rate = 0.0001)
-
-Loss Function: categorical_crossentropy
-
-Performance
+## Performance
 
 The model was trained for 10 epochs and demonstrated strong performance.
 
-Final Training Accuracy: 97.82%
+* **Final Training Accuracy:** 97.82%
+* **Final Validation Accuracy:** 94.59%
 
-Final Validation Accuracy: 94.59%
+### Accuracy Visualization
 
-Accuracy Visualization
+*(This is where you can insert the `accuracy_visualization.png` image generated by your training notebook)*
 
-(This is where you can insert the accuracy_visualization.png image generated by your training notebook)
-
-Technology Stack
-
-Backend & Model: Python, TensorFlow, Keras, Scikit-learn
-
-Web Framework: Streamlit
-
-Data Handling: NumPy, Pandas
-
-Image Processing: OpenCV, Matplotlib, Seaborn
-
-How to Run This Project
+## 🚀 How to Run This Project
 
 Follow these steps to set up and run the project on your local machine.
 
-1. Prerequisites
+### 1. Prerequisites
 
-Python 3.8+
+* [Python 3.8+](https://www.python.org/)
+* [Git](https://git-scm.com/)
 
-Git
-
-2. Clone Repository
-
+### 2. Clone Repository
+```bash
 git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
 cd YOUR_REPOSITORY_NAME
-
-
-3. Set Up Virtual Environment
+```
+### 3. Set Up Virtual Environment
 
 It's highly recommended to use a virtual environment.
 
-# Windows
+# Since you're on Windows
+```bash
 python -m venv venv
 venv\Scripts\activate
+```
+### 4. Install Dependencies
 
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-
-
-4. Install Dependencies
-
-Place the requirements.txt file (containing the exact versions you provided) in the root of your project. Then, run the following command:
-
+Place your requirements.txt file in the root of your project. Then, run the following command:
+```bash
 pip install -r requirements.txt
-
-
-5. Download Dataset & Model
-
+```
+### 5. Download Dataset & Model
 Dataset: Download the New Plant Diseases Dataset from Kaggle. Extract it and ensure you have the train and valid folders in your project directory.
 
 Trained Model: You must have the trained_plant_disease_model.keras file. You can either:
@@ -126,17 +104,16 @@ Run the training notebook (.ipynb file) yourself to generate it.
 
 (If you've already trained it) Place the trained_plant_disease_model.keras file in the root directory.
 
-6. Run the Streamlit App
-
+### 6. Run the Streamlit App
 Once the dependencies are installed and the model file is in place, run the Streamlit app:
 
+```Bash
+
 streamlit run main.py
-
-
+```
 This will start a local web server. Open your browser and go to the URL shown in your terminal (usually http://localhost:8501).
 
 How to Use the App
-
 Navigate to http://localhost:8501.
 
 Use the sidebar to select the "Disease Recognition" page.
@@ -146,7 +123,3 @@ Click "Choose an Image:" to upload an image of a plant leaf.
 Click the "Predict" button.
 
 The app will display the predicted disease name below the button.
-
-License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
